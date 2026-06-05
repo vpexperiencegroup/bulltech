@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bulltech | División Tecnológica VPEG</title>
+    <!-- Google Fonts para tipografía moderna y limpia -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* --- VARIABLES DE COLOR (Tomadas del Flyer Oficial) --- */
+        :root {
+            --primary-red: #D30B26;    /* Rojo Carmesí Bulltech */
+            --dark-bg: #0B0C10;        /* Negro Puro Tecnológico */
+            --card-bg: #1F2833;        /* Gris Oxford Corporativo */
+            --text-light: #F5F5F5;     /* Blanco Limpio */
+            --text-gray: #C5C6C7;      /* Gris Técnico */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* --- NAVBAR --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background-color: rgba(11, 12, 16, 0.95);
+            border-bottom: 2px solid rgba(211, 11, 38, 0.2);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo-text {
+            font-weight: 900;
+            font-size: 24px;
+            letter-spacing: 1px;
+        }
+        .logo-text span {
+            color: var(--primary-red);
+        }
+
+        .holding-badge {
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--text-gray);
+            padding: 6px 12px;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-radius: 4px;
+        }
+
+        /* --- HERO SECTION --- */
+        header {
+            padding: 160px 8% 100px 8%;
+            min-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(180deg, rgba(11,12,16,0.5) 0%, rgba(31,40,51,0.3) 100%), 
+                        radial-gradient(circle at center, rgba(211,11,38,0.15) 0%, transparent 60%);
+        }
+
+        .slogan-top {
+            color: var(--primary-red);
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin-bottom: 15px;
+        }
+
+        header h1 {
+            font-size: 48px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            max-width: 900px;
+        }
+
+        .sub-legend {
+            font-size: 16px;
+            color: var(--text-gray);
+            font-weight: 400;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-top: 10px;
+            margin-bottom: 30px;
+        }
+
+        header p.intro-text {
+            font-size: 16px;
+            color: var(--text-gray);
+            max-width: 650px;
+            margin-bottom: 40px;
+        }
+
+        .cta-btn {
+            background-color: var(--primary-red);
+            color: var(--text-light);
+            padding: 15px 35px;
+            font-size: 14px;
+            font-weight: 700;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(211, 11, 38, 0.4);
+        }
+
+        .cta-btn:hover {
+            background-color: #f40d2d;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(211, 11, 38, 0.6);
+        }
+
+        /* --- GRID DE SERVICIOS CORPORATIVOS --- */
+        .services-section {
+            padding: 100px 8%;
+            background-color: #050508;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 32px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .section-title h2 span {
+            color: var(--primary-red);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 40px 30px;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background-color: var(--primary-red);
+            transform: scaleY(0);
+            transform-origin: bottom;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(211, 11, 38, 0.3);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        .service-card:hover::before {
+            transform: scaleY(1);
+        }
+
+        .service-card h3 {
+            font-size: 18px;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .service-card p {
+            font-size: 14px;
+            color: var(--text-gray);
+        }
+
+        /* --- FOOTER / INFO DE RESPALDO --- */
+        footer {
+            background-color: var(--dark-bg);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 40px 8%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 20px;
+        }
+
+        .footer-holding {
+            font-size: 13px;
+            color: var(--text-gray);
+            letter-spacing: 1px;
+        }
+
+        .footer-holding strong {
+            color: var(--text-light);
+        }
+
+        .copyright {
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* --- RESPONSIVO --- */
+        @media (max-width: 768px) {
+            header h1 { font-size: 32px; }
+            .sub-legend { font-size: 12px; letter-spacing: 1px; }
+            nav { flex-direction: column; gap: 10px; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR CORPORATIVA -->
+    <nav>
+        <div class="logo-text">BULL<span>TECH</span></div>
+        <div class="holding-badge">VP Experience Group</div>
+    </nav>
+
+    <!-- HERO / SECCIÓN PRINCIPAL DE VENTA -->
+    <header>
+        <div class="slogan-top">División de Infraestructura Tecnológica</div>
+        <h1>Soluciones Tecnológicas Integrales</h1>
+        <div class="sub-legend">Tecnología que impulsa tu mundo</div>
+        <p class="intro-text">
+            Desarrollamos e implementamos infraestructura digital de alto rendimiento, blindaje de seguridad y soporte crítico para optimizar la continuidad operativa de hogares y empresas de alta demanda.
+        </p>
+        <a href="https://vpexperiencegroup.com.mx" class="cta-btn">Volver a VPEG Holding</a>
+    </header>
+
+    <!-- GRID DE SERVICIOS -->
+    <section class="services-section">
+        <div class="section-title">
+            <h2>Nuestras Especialidades <span>Estructurales</span></h2>
+        </div>
+        <div class="services-grid">
+            
+            <div class="service-card">
+                <h3>Mantenimiento Preventivo y Correctivo</h3>
+                <p>Diagnóstico avanzado, limpieza estructural, reingeniería de sistemas y optimización profunda para mantener tus infraestructuras de cómputo en condiciones óptimas de rendimiento.</p>
+            </div>
+
+            <div class="service-card">
+                <h3>Soporte Técnico Especializado</h3>
+                <p>Arquitectura de asistencia técnica corporativa. Atención ágil, diagnóstico de fallas en sitio y soluciones de conectividad críticas con respuesta inmediata.</p>
+            </div>
+
+            <div class="service-card">
+                <h3>Instalación de Hardware y Software</h3>
+                <p>Configuración a la medida de componentes avanzados, servidores, nodos de red y despliegue de licenciamiento e infraestructura de software especializado.</p>
+            </div>
+
+            <div class="service-card">
+                <h3>Sistemas de Seguridad y Videovigilancia</h3>
+                <p>Despliegue de circuitos cerrados de televisión (CCTV) avanzados, cámaras de seguridad con analíticas de video e integración de monitoreo remoto para blindar tus operaciones.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER INSTITUCIONAL -->
+    <footer>
+        <div class="footer-holding">
+            Brazo Tecnológico de <strong>VP Experience Group Holding</strong>
+        </div>
+        <div class="copyright">
+            &copy; 2026 Bulltech & VPEG. Todos los derechos reservados. Confidencialidad y Control.
+        </div>
+    </footer>
+
+</body>
+</html>
